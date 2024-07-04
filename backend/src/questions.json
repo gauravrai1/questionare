@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "question": "Which city is home to the CN Tower?",
+      "answer": "Toronto"
+    },
+    {
+      "id": 2,
+      "question": "Where can you visit Banff National Park?",
+      "options": ["Alberta", "British Columbia", "Ontario", "Quebec"],
+      "answer": "Alberta"
+    },
+    {
+      "id": 3,
+      "question": "Which city is known for the annual Calgary Stampede?",
+      "answer": "Calgary"
+    },
+    {
+      "id": 4,
+      "question": "Where can you find the historic site of Old Quebec?",
+      "options": ["Quebec City", "Toronto", "Montreal", "Vancouver"],
+      "answer": "Quebec City"
+    },
+    {
+      "id": 5,
+      "question": "Which Canadian city is famous for Stanley Park?",
+      "answer": "Vancouver"
+    },
+    {
+      "id": 6,
+      "question": "Which location is known for the scenic Icefields Parkway?",
+      "options": ["Banff to Jasper", "Toronto to Niagara", "Vancouver to Whistler", "Montreal to Quebec City"],
+      "answer": "Banff to Jasper"
+    },
+    {
+      "id": 7,
+      "question": "Where can you see the Northern Lights in Canada?",
+      "answer": "Yukon"
+    },
+    {
+      "id": 8,
+      "question": "Which island is known for the Anne of Green Gables Museum?",
+      "answer": "Prince Edward Island"
+    },
+    {
+      "id": 9,
+      "question": "Where is the historic site of Fortress of Louisbourg?",
+      "options": ["Nova Scotia", "Newfoundland", "New Brunswick", "Prince Edward Island"],
+      "answer": "Nova Scotia"
+    },
+    {
+      "id": 10,
+      "question": "Which city is known for the Rideau Canal?",
+      "answer": "Ottawa"
+    }
+  ]
