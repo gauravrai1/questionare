@@ -3,15 +3,58 @@ import questions from './questions.json';
 
 const router = Router();
 
-// Health check
-router.get('/health', (req, res) => {
-  res.send('OK');
-});
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Question:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           description: The question ID
+ *         question:
+ *           type: string
+ *           description: The question text
+ *         options:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: The answer options
+ */
 
+/**
+ * @swagger
+ * /api/questions:
+ *   get:
+ *     summary: Get all questions
+ *     responses:
+ *       200:
+ *         description: A list of questions
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Question'
+ */
 router.get('/questions', (req, res) => {
     res.json(questions);
 });
 
+/**
+ * @swagger
+ * /api/questions/random:
+ *   get:
+ *     summary: Get a random question
+ *     responses:
+ *       200:
+ *         description: A random question
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Question'
+ */
 router.get('/questions/random', (req, res) => {
     // Generate a random index based on the number of questions
     const randomIndex = Math.floor(Math.random() * questions.length);
@@ -22,6 +65,43 @@ router.get('/questions/random', (req, res) => {
     res.json({ id, question, options });
 });
 
+/**
+ * @swagger
+ * /api/submit:
+ *   post:
+ *     summary: Submit answers
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               id:
+ *                 type: integer
+ *                 description: The question ID
+ *               answer:
+ *                 type: string
+ *                 description: The chosen answer
+ *     responses:
+ *       200:
+ *         description: The result of the submission
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                 correct:
+ *                   type: boolean
+ *                 correctAnswer:
+ *                   type: string
+ *       400:
+ *         description: Missing id or answer in request body
+ *       404:
+ *         description: Question not found
+ */
 router.post('/submit', (req, res) => {
     const { id, answer } = req.body;
   
