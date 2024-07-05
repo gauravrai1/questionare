@@ -1,7 +1,6 @@
-// components/Home/qa.jsx
 import React from "react";
 
-const Qa = ({ q = {}, onAnswer }) => {
+const Qa = ({ q = {}, onAnswer, inputClass }) => {
   const { id, question, options } = q;
 
   const handleInputChange = (e) => {
@@ -21,11 +20,13 @@ const Qa = ({ q = {}, onAnswer }) => {
           </label>
           <select
             id={`question-${id}`}
-            className="border rounded px-3 py-2 w-full"
+            className={`border rounded px-3 py-2 w-full ${inputClass}`}
             onChange={handleSelectChange}
             defaultValue=""
           >
-            <option value="" disabled>Select an option</option>
+            <option value="" disabled>
+              Select an option
+            </option>
             {options.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -41,7 +42,7 @@ const Qa = ({ q = {}, onAnswer }) => {
           <input
             type="text"
             id={`question-${id}`}
-            className="border rounded px-3 py-2 w-full"
+            className={`border rounded px-3 py-2 w-full ${inputClass}`}
             placeholder="Enter your answer"
             onChange={handleInputChange}
           />

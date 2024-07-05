@@ -8,6 +8,8 @@ const Questionaire = () => {
   const [question, setQuestion] = useState(null);
   const [answer, setAnswer] = useState("");
   const [validationMessage, setValidationMessage] = useState("");
+  const [inputClass, setInputClass] = useState("");
+  const [buttonClass, setButtonClass] = useState("bg-blue-500 dark:md:hover:bg-blue-600"); // Initialize buttonClass state
 
   useEffect(() => {
     fetchRandomQuestion();
@@ -23,6 +25,8 @@ const Questionaire = () => {
       setQuestion(data);
       setAnswer(""); // Clear previous answer when fetching new question
       setValidationMessage("");
+      setInputClass("");
+      setButtonClass("bg-blue-500 dark:md:hover:bg-blue-600"); // Reset button class for new question
     } catch (error) {
       console.error("Error fetching question:", error);
       // Handle error gracefully
@@ -49,8 +53,12 @@ const Questionaire = () => {
       // Assuming the API response includes correct and correctAnswer fields
       if (data.correct) {
         setValidationMessage("Correct!");
+        setInputClass("border-green-500 bg-green-100");
+        setButtonClass("bg-green-500 dark:md:hover:bg-green-600"); // Reset button class on correct answer
       } else {
-        setValidationMessage("Incorrect. Correct answer: " + data.correctAnswer);
+        setValidationMessage("Incorrect");
+        setInputClass("border-red-500 bg-red-100");
+        setButtonClass("bg-red-500 dark:md:hover:bg-red-600"); // Set the button class to red on incorrect answer
       }
     } catch (error) {
       console.error("Error submitting answer:", error);
@@ -67,10 +75,10 @@ const Questionaire = () => {
       <div className="max-w-lg bg-white rounded-lg shadow-lg p-8 ">
         {question && (
           <>
-            <Qa q={question} onAnswer={handleOnAnswer} />
+            <Qa q={question} onAnswer={handleOnAnswer} inputClass={inputClass} />
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 w-full"
+              className={`${buttonClass} text-white font-bold py-2 px-4 rounded mt-4 w-full`}
               style={{ zIndex: 10 }}
             >
               Submit
