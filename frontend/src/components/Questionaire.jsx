@@ -57,6 +57,7 @@ const Questionaire = () => {
         setButtonClass("bg-green-500 dark:md:hover:bg-green-600"); // Reset button class on correct answer
       } else {
         setValidationMessage("Incorrect");
+        setAnswer("");
         setInputClass("border-red-500 bg-red-100");
         setButtonClass("bg-red-500 dark:md:hover:bg-red-600"); // Set the button class to red on incorrect answer
       }
